@@ -6,14 +6,13 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "keras>=3.12.0",
+    "matplotlib>=3.10.8",
     "numpy>=2.3.5",
     "pandas>=2.3.3",
     "scikit-learn>=1.7.2",
     "tqdm>=4.67.1",
     "xgboost>=3.1.2",
 ]
-<<<<<<< Updated upstream
-=======
 
 [dependency-groups]
 dev = [
@@ -24,4 +23,3 @@ dev = [
 [build-system]
 requires = ["uv_build>=0.9.17,<0.10.0"]
 build-backend = "uv_build"
->>>>>>> Stashed changes
