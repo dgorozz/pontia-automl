@@ -1,4 +1,4 @@
-from src.config import MODELS_PATH
+from pontia_automl.config import MODELS_PATH
 
 from glob import glob
 import os

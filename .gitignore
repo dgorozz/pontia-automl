@@ -1,4 +1,5 @@
 *.csv
+*.pkl
 
 # Python-generated files
 __pycache__/
