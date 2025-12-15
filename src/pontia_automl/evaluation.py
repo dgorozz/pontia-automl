@@ -3,19 +3,33 @@ from pontia_automl.config import MODELS_PATH
 from glob import glob
 import os
 
-from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score
+import matplotlib.pyplot as plt
+from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay, roc_curve, auc
 
 
-def get_saved_model_paths():
-    return glob(os.path.join(MODELS_PATH, "*.pkl"))
-    
+def plot_roc_curve(model_name, y_true, y_proba):
 
-def evaluate_model(model, X_test, y_test):
-    y_pred = model.predict(X_test)
+    fpr, tpr, _ = roc_curve(y_true, y_proba)
+    roc_auc = auc(fpr, tpr)
 
-    return {
-        "accuracy": accuracy_score(y_test, y_pred),
-        "precision": precision_score(y_test, y_pred, average="weighted"),
-        "recall": recall_score(y_test, y_pred, average="weighted"),
-        "f1": f1_score(y_test, y_pred, average="weighted")
-    }
+    plt.figure()
+    plt.plot(fpr, tpr, label=f"ROC AUC = {roc_auc:.3f}")
+    plt.plot([0, 1], [0, 1], linestyle="--")
+    plt.xlabel("False Positive Rate")
+    plt.ylabel("True Positive Rate")
+    plt.title(f"ROC Curve – {model_name}")
+    plt.legend()
+    plt.show()
+
+
+def plot_confusion_matrix(model_name, y_true, y_pred):
+    cm = confusion_matrix(y_true, y_pred)
+
+    disp = ConfusionMatrixDisplay(
+        confusion_matrix=cm,
+        display_labels=["No cancel", "Cancel"]
+    )
+
+    disp.plot()
+    plt.title(f"Confusion Matrix – {model_name}")
+    plt.show()
