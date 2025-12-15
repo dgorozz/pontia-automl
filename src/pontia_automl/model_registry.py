@@ -4,11 +4,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.tree import DecisionTreeClassifier
 from xgboost import XGBClassifier
 
-
 from pontia_automl.config import SEED
-
-
-
 
 
 MODEL_REGISTRY = {
