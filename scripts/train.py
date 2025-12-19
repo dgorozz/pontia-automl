@@ -9,7 +9,6 @@ from sklearn.model_selection import train_test_split
 from pontia_automl.preprocessing import build_pipeline
 from pontia_automl.model_registry import get_model, VALID_MODEL_NAMES
 from pontia_automl.config import PROCESSED_DATASET_PATH, MODELS_PATH, SEED
-from pontia_automl.evaluation import evaluate_model
 
 
 def main():
